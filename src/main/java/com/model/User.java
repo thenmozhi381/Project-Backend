@@ -1,4 +1,4 @@
-package com.model;
+ package com.model;
 
 import java.io.Serializable;
 
@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -19,26 +20,27 @@ public class User implements Serializable
 	 */
 	private static final long serialVersionUID=1L;
 	@Id
-	@NotNull(message="Email Id cannot be blank")
+	@NotEmpty(message="Email Id cannot be blank")
 	@Pattern(regexp="[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$",message="Email ID is not in proper format")
+	//@Pattern(regexp=".+@.+\\..+")
 	private String email;
 	
-	@NotNull(message="Name cannot be blank")
-	//@Size(min=8,max=15)
+	@NotEmpty(message="Name cannot be blank")
+	@Size(min=8,max=15)
 	private String name;
 	
-	@NotNull(message="Password cannot be blank")
-	//@Size(min=8,max=15)
+	@NotEmpty(message="Password cannot be blank")
+	@Size(min=8,max=15)
 	private String password;
 	private boolean enabled;
 	private String role;
 
-	@NotNull(message="City cannot be blank")
+	@NotEmpty(message="City cannot be blank")
 	private String city;
 	
-	@NotNull(message="Mobile Number cannot be cannot be blank")
-	//@Size(min=10,max=10)
-	//@Pattern(regexp="[789]\\d{9}",message="Mobile Number is not in proper format")
+	@NotEmpty(message="Mobile Number cannot be cannot be blank")
+	@Size(min=10,max=10)
+	@Pattern(regexp="[789]\\d{9}",message="Mobile Number is not in proper format")
 	private String phone;
 	
 	public String getEmail() {

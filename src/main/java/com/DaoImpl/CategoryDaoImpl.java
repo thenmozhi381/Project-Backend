@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 import com.Dao.CategoryDao;
 
 import com.model.Categorydetails;
-import com.model.Productdetails;
 
 
 @Repository("categoryDaoImpl")
